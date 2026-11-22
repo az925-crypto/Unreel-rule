@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "rulesVersion": 2026112201,
-  "publishedAt": "2026-11-22T08:00:00Z",
+  "rulesVersion": 2026112203,
+  "publishedAt": "2026-11-22T14:00:00Z",
   "minAppVersionCode": 1,
   "defaults": {
     "debounceMs": 120,
@@ -16,8 +16,13 @@
     {
       "id": "youtube_shorts",
       "displayName": "YouTube Shorts",
-      "packages": ["com.google.android.youtube"],
-      "appVersionRange": { "minCode": 0, "maxCode": null },
+      "packages": [
+        "com.google.android.youtube"
+      ],
+      "appVersionRange": {
+        "minCode": 0,
+        "maxCode": null
+      },
       "surfaces": [
         {
           "id": "shorts_player",
@@ -52,8 +57,13 @@
     {
       "id": "instagram_reels",
       "displayName": "Instagram Reels & Explore",
-      "packages": ["com.instagram.android"],
-      "appVersionRange": { "minCode": 0, "maxCode": null },
+      "packages": [
+        "com.instagram.android"
+      ],
+      "appVersionRange": {
+        "minCode": 0,
+        "maxCode": null
+      },
       "surfaces": [
         {
           "id": "reels_viewer",
@@ -112,17 +122,238 @@
           "action": "BACK"
         }
       ]
+    },
+    {
+      "id": "tiktok_feed",
+      "displayName": "TikTok Feed",
+      "packages": [
+        "com.zhiliaoapp.musically",
+        "com.ss.android.ugc.trill"
+      ],
+      "appVersionRange": {
+        "minCode": 0,
+        "maxCode": null
+      },
+      "surfaces": [
+        {
+          "id": "tiktok_video_player_trill",
+          "confidence": "STRONG",
+          "matchAll": [
+            {
+              "by": "viewId",
+              "op": "equals",
+              "value": "com.ss.android.ugc.trill:id/long_press_layout"
+            }
+          ],
+          "exclude": [
+            {
+              "by": "contentDesc",
+              "op": "equals",
+              "value": "Kotak Masuk",
+              "selected": true
+            },
+            {
+              "by": "contentDesc",
+              "op": "equals",
+              "value": "Inbox",
+              "selected": true
+            },
+            {
+              "by": "contentDesc",
+              "op": "equals",
+              "value": "Profil",
+              "selected": true
+            },
+            {
+              "by": "contentDesc",
+              "op": "equals",
+              "value": "Profile",
+              "selected": true
+            }
+          ],
+          "action": "OVERLAY"
+        },
+        {
+          "id": "tiktok_video_player_musically",
+          "confidence": "STRONG",
+          "matchAll": [
+            {
+              "by": "viewId",
+              "op": "equals",
+              "value": "com.zhiliaoapp.musically:id/long_press_layout"
+            }
+          ],
+          "exclude": [
+            {
+              "by": "contentDesc",
+              "op": "equals",
+              "value": "Kotak Masuk",
+              "selected": true
+            },
+            {
+              "by": "contentDesc",
+              "op": "equals",
+              "value": "Inbox",
+              "selected": true
+            },
+            {
+              "by": "contentDesc",
+              "op": "equals",
+              "value": "Profil",
+              "selected": true
+            },
+            {
+              "by": "contentDesc",
+              "op": "equals",
+              "value": "Profile",
+              "selected": true
+            }
+          ],
+          "action": "OVERLAY"
+        },
+        {
+          "id": "tiktok_fyp_tab_id_saran",
+          "confidence": "STRONG",
+          "matchAll": [
+            {
+              "by": "text",
+              "op": "equals",
+              "value": "Saran",
+              "selected": true
+            }
+          ],
+          "exclude": [],
+          "action": "OVERLAY"
+        },
+        {
+          "id": "tiktok_fyp_tab_id",
+          "confidence": "STRONG",
+          "matchAll": [
+            {
+              "by": "text",
+              "op": "equals",
+              "value": "Untuk Anda",
+              "selected": true
+            }
+          ],
+          "exclude": [],
+          "action": "OVERLAY"
+        },
+        {
+          "id": "tiktok_fyp_tab_en",
+          "confidence": "STRONG",
+          "matchAll": [
+            {
+              "by": "text",
+              "op": "equals",
+              "value": "For You",
+              "selected": true
+            }
+          ],
+          "exclude": [],
+          "action": "OVERLAY"
+        }
+      ]
+    },
+    {
+      "id": "facebook_reels",
+      "displayName": "Facebook Reels",
+      "packages": [
+        "com.facebook.katana"
+      ],
+      "appVersionRange": {
+        "minCode": 0,
+        "maxCode": null
+      },
+      "surfaces": [
+        {
+          "id": "fb_reels_detail_id",
+          "confidence": "STRONG",
+          "matchAll": [
+            {
+              "by": "contentDesc",
+              "op": "contains",
+              "value": "Detail tab reel"
+            }
+          ],
+          "exclude": [],
+          "action": "BACK"
+        },
+        {
+          "id": "fb_reels_detail_en",
+          "confidence": "STRONG",
+          "matchAll": [
+            {
+              "by": "contentDesc",
+              "op": "contains",
+              "value": "Reel tab details"
+            }
+          ],
+          "exclude": [],
+          "action": "BACK"
+        },
+        {
+          "id": "fb_reels_profile_id",
+          "confidence": "STRONG",
+          "matchAll": [
+            {
+              "by": "contentDesc",
+              "op": "contains",
+              "value": "profil Reels"
+            }
+          ],
+          "exclude": [],
+          "action": "BACK"
+        },
+        {
+          "id": "fb_reels_profile_en",
+          "confidence": "STRONG",
+          "matchAll": [
+            {
+              "by": "contentDesc",
+              "op": "contains",
+              "value": "Reels profile"
+            }
+          ],
+          "exclude": [],
+          "action": "BACK"
+        },
+        {
+          "id": "fb_reels_tab_selected",
+          "confidence": "STRONG",
+          "matchAll": [
+            {
+              "by": "contentDesc",
+              "op": "contains",
+              "value": "Reels",
+              "selected": true
+            }
+          ],
+          "exclude": [],
+          "action": "BACK"
+        }
+      ]
     }
   ],
   "strictGuard": {
-    "packages": ["com.android.settings"],
+    "packages": [
+      "com.android.settings"
+    ],
     "surfaces": [
       {
         "id": "unreel_accessibility_detail",
         "confidence": "STRONG",
         "matchAll": [
-          { "by": "text", "op": "contains", "value": "Unreel" },
-          { "by": "className", "op": "contains", "value": "Accessibility" }
+          {
+            "by": "text",
+            "op": "contains",
+            "value": "Unreel"
+          },
+          {
+            "by": "className",
+            "op": "contains",
+            "value": "Accessibility"
+          }
         ],
         "exclude": [],
         "action": "BACK"
@@ -131,8 +362,16 @@
         "id": "unreel_app_info_en",
         "confidence": "STRONG",
         "matchAll": [
-          { "by": "text", "op": "equals", "value": "Unreel" },
-          { "by": "text", "op": "contains", "value": "Force stop" }
+          {
+            "by": "text",
+            "op": "equals",
+            "value": "Unreel"
+          },
+          {
+            "by": "text",
+            "op": "contains",
+            "value": "Force stop"
+          }
         ],
         "exclude": [],
         "action": "BACK"
@@ -141,8 +380,16 @@
         "id": "unreel_app_info_id",
         "confidence": "STRONG",
         "matchAll": [
-          { "by": "text", "op": "equals", "value": "Unreel" },
-          { "by": "text", "op": "contains", "value": "Paksa berhenti" }
+          {
+            "by": "text",
+            "op": "equals",
+            "value": "Unreel"
+          },
+          {
+            "by": "text",
+            "op": "contains",
+            "value": "Paksa berhenti"
+          }
         ],
         "exclude": [],
         "action": "BACK"
