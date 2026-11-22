@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": 2026112201,
+  "publishedAt": "2026-11-22T08:00:00Z",
+  "minAppVersionCode": 1,
+  "defaults": {
+    "debounceMs": 120,
+    "action": "BACK",
+    "loopGuard": {
+      "maxInterventions": 3,
+      "windowMs": 3000,
+      "escalateTo": "OVERLAY"
+    }
+  },
+  "platforms": [
+    {
+      "id": "youtube_shorts",
+      "displayName": "YouTube Shorts",
+      "packages": ["com.google.android.youtube"],
+      "appVersionRange": { "minCode": 0, "maxCode": null },
+      "surfaces": [
+        {
+          "id": "shorts_player",
+          "confidence": "STRONG",
+          "matchAll": [
+            {
+              "by": "viewId",
+              "op": "equals",
+              "value": "com.google.android.youtube:id/reel_recycler",
+              "visible": true
+            }
+          ],
+          "exclude": [],
+          "action": "BACK"
+        },
+        {
+          "id": "shorts_tab_selected",
+          "confidence": "WEAK",
+          "matchAll": [
+            {
+              "by": "contentDesc",
+              "op": "equals",
+              "value": "Shorts",
+              "selected": true
+            }
+          ],
+          "exclude": [],
+          "action": "BACK"
+        }
+      ]
+    },
+    {
+      "id": "instagram_reels",
+      "displayName": "Instagram Reels & Explore",
+      "packages": ["com.instagram.android"],
+      "appVersionRange": { "minCode": 0, "maxCode": null },
+      "surfaces": [
+        {
+          "id": "reels_viewer",
+          "confidence": "STRONG",
+          "matchAll": [
+            {
+              "by": "viewId",
+              "op": "equals",
+              "value": "com.instagram.android:id/clips_viewer_view_pager",
+              "visible": true
+            }
+          ],
+          "exclude": [],
+          "action": "BACK"
+        },
+        {
+          "id": "reels_tab_selected",
+          "confidence": "WEAK",
+          "matchAll": [
+            {
+              "by": "contentDesc",
+              "op": "equals",
+              "value": "Reels",
+              "selected": true
+            }
+          ],
+          "exclude": [],
+          "action": "BACK"
+        },
+        {
+          "id": "explore_tab_selected_en",
+          "confidence": "WEAK",
+          "matchAll": [
+            {
+              "by": "contentDesc",
+              "op": "contains",
+              "value": "Search and explore",
+              "selected": true
+            }
+          ],
+          "exclude": [],
+          "action": "BACK"
+        },
+        {
+          "id": "explore_tab_selected_id",
+          "confidence": "WEAK",
+          "matchAll": [
+            {
+              "by": "contentDesc",
+              "op": "contains",
+              "value": "Cari dan jelajahi",
+              "selected": true
+            }
+          ],
+          "exclude": [],
+          "action": "BACK"
+        }
+      ]
+    }
+  ],
+  "strictGuard": {
+    "packages": ["com.android.settings"],
+    "surfaces": [
+      {
+        "id": "unreel_accessibility_detail",
+        "confidence": "STRONG",
+        "matchAll": [
+          { "by": "text", "op": "contains", "value": "Unreel" },
+          { "by": "className", "op": "contains", "value": "Accessibility" }
+        ],
+        "exclude": [],
+        "action": "BACK"
+      },
+      {
+        "id": "unreel_app_info_en",
+        "confidence": "STRONG",
+        "matchAll": [
+          { "by": "text", "op": "equals", "value": "Unreel" },
+          { "by": "text", "op": "contains", "value": "Force stop" }
+        ],
+        "exclude": [],
+        "action": "BACK"
+      },
+      {
+        "id": "unreel_app_info_id",
+        "confidence": "STRONG",
+        "matchAll": [
+          { "by": "text", "op": "equals", "value": "Unreel" },
+          { "by": "text", "op": "contains", "value": "Paksa berhenti" }
+        ],
+        "exclude": [],
+        "action": "BACK"
+      }
+    ]
+  }
+}
